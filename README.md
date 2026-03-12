@@ -116,3 +116,34 @@ Columns included:
 - `selected_answers` (For multiple choice/dropdowns, pipe `|` separated)
 - `student_text_answer` (For open-ended essay questions)
 - `instructor_comment` (Any additional comments left by the grader)
+
+## Troubleshooting & OS-Specific Notes
+
+- **Cross-platform support**: The scripts are pure Python and are expected to work on **macOS, Linux, and Windows** as long as the dependencies are installed and Chrome/Chromium is available.
+
+- **Python command name**
+  - On **macOS/Linux**, your Python executable may be `python3` instead of `python`. Adjust commands accordingly:
+    - `python3 fetch_submissions.py ...`
+    - `python3 scrape_quiz.py ...`
+  - On **Windows**, `python` is usually correct once Python is added to your PATH.
+
+- **Chrome / Chromium path**
+  - **macOS**: The example uses `/Applications/Google Chrome.app/...`. If you use a different Chrome build (e.g., Canary) or a non-standard install location, update the path accordingly.
+  - **Windows**: The example uses `"C:\Program Files\Google\Chrome\Application\chrome.exe"`. On some systems it may be under `"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"` or a user-specific install path—update the command to match your system.
+  - **Linux**: The example uses `chromium-browser`. If your distro uses a different binary name (e.g., `chromium` or `google-chrome`), substitute that in the command.
+
+- **Remote debugging and login issues**
+  - If `scrape_quiz.py` fails to connect with an error like **"Error connecting to browser on port 9222"**, verify that:
+    - Chrome/Chromium is running.
+    - It was started with `--remote-debugging-port=9222`.
+    - Nothing (firewall, corporate security tools) is blocking `http://localhost:9222`.
+  - If the script reports that you are **logged out** (e.g., it detects a login page), switch to the browser window, log back into Canvas, ensure you can open a quiz history page, then rerun the script.
+
+- **Playwright not installed / browser missing**
+  - If you see import errors for `playwright` or errors about missing browser binaries:
+    - Install the package: `pip install playwright`
+    - Install the Chromium runtime: `playwright install chromium`
+  - On some systems you may need to run these with `python -m pip` or `python3 -m pip` depending on how Python is configured.
+
+- **Encoding / CSV issues**
+  - The CSV is written as UTF-8. If Excel or another tool shows garbled characters, explicitly import the file as UTF-8 or open it with a tool that supports UTF-8 by default (e.g., LibreOffice, VS Code, or a modern text editor).

@@ -2,6 +2,8 @@
 """
 Helper script to fetch quiz submissions from Canvas API using a provided API token.
 Saves the results to a JSON file for the scraper to use.
+
+This script is cross-platform and should run on macOS, Linux, and Windows wherever Python and the `requests` library are available. See the README's "Troubleshooting & OS-Specific Notes" section for guidance on Python invocation differences across operating systems.
 """
 
 import os
