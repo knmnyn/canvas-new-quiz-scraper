@@ -5,6 +5,8 @@ Canvas Quiz Scraper
 A robust tool to scrape student answers and comments from Canvas quiz submissions.
 Uses Playwright to connect to an existing authenticated browser session via CDP.
 
+This script is designed to be cross-platform and should work on macOS, Linux, and Windows as long as Python, Playwright, and Chrome/Chromium are installed. See the "Troubleshooting & OS-Specific Notes" section in the README for details on starting Chrome/Chromium with remote debugging and common connection issues.
+
 Requirements:
 - playwright (`pip install playwright`)
 - An active browser session logged into Canvas with remote debugging enabled
